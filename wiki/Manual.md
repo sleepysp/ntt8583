@@ -214,16 +214,18 @@ import org.nucleus8583.core.Iso8583MessageFactory;
 Every type has its own value for ```align```, ```pad-with```, and ```empty-value``` attributes (except ```custom``` type). If you use so, you can't override their value. If you would like to use custom value, please use ```custom``` type.
 
 This is the value for ```align```, ```pad-with```, and ```empty-value``` attributes:
-|| *type* || *align* || *pad-with* || *empty-value* ||
-|| a      || left    || `<space>`  || `<empty-string>` ||
-|| n      || right   || `0`  || `0` ||
-|| s      || left    || `<space>`  || `<empty-string>` ||
-|| an     || left    || `<space>`  || `<empty-string>` ||
-|| ns     || left    || `<space>`  || `<empty-string>` ||
-|| ans    || left    || `<space>`  || `<empty-string>` ||
-|| .      || none    || `N/A`  || `<empty-string>` ||
-|| ..     || none    || `N/A`  || `<empty-string>` ||
-|| ...    || none    || `N/A`  || `<empty-string>` ||
+
+| *type* | *align* | *pad-with* | *empty-value* |
+|--------|---------|------------|-------------------|
+| a      | left    | `<space>`  | `<empty-string>` |
+| n      | right   | `0`  | `0` |
+| s      | left    | `<space>`  | `<empty-string>` |
+| an     | left    | `<space>`  | `<empty-string>` |
+| ns     | left    | `<space>`  | `<empty-string>` |
+| ans    | left    | `<space>`  | `<empty-string>` |
+| .      | none    | `N/A`  | `<empty-string>` |
+| ..     | none    | `N/A`  | `<empty-string>` |
+| ...    | none    | `N/A`  | `<empty-string>` |
 
 
 ## Creating Message
