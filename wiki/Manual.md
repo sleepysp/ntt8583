@@ -1,7 +1,7 @@
-# Manual Documentation =
+# Manual Documentation
 nucleus8583 provides API to read and write from / to ISO-8583 message. Before using read/write operation, you will need to create message factory configuration.
 
-## Message Factory ==
+## Message Factory
 message factory is a set of rules defined how to perform conversion to / from ISO-8583 message. These rules defined in specific XML format:
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -161,7 +161,7 @@ Here is the complete sample of codec XML file:
 </iso-message>
 ```
 
-### Java Code===
+### Java Code
 Before you can do any operations, you *must* have one instance of ```org.nucleus8583.core.Iso8583MessageFactory``` class, this instance can be safely shared in your Java Application so you can save your memory consumption. To instance the class, you can use class constructor. The class constructor has signatures
   ```public Iso8583MessageFactory(java.io.InputStream);```
   ```public Iso8583MessageFactory(java.lang.String);```
@@ -210,7 +210,7 @@ import org.nucleus8583.core.Iso8583MessageFactory;
 ...
 ```
 
-### Note===
+### Note
 Every type has its own value for ```align```, ```pad-with```, and ```empty-value``` attributes (except ```custom``` type). If you use so, you can't override their value. If you would like to use custom value, please use ```custom``` type.
 
 This is the value for ```align```, ```pad-with```, and ```empty-value``` attributes:
@@ -226,7 +226,7 @@ This is the value for ```align```, ```pad-with```, and ```empty-value``` attribu
 || ...    || none    || `N/A`  || `<empty-string>` ||
 
 
-## Creating Message==
+## Creating Message
 Before invoking read/write operation, you need one instance of ```org.nucleus8583.core.Iso8583Message```. You can create the instance by using code
 
 ```java
@@ -294,7 +294,7 @@ import org.nucleus8583.core.Iso8583Message;
 ...
 ```
 
-## Read ==
+## Read
 Read operation means convert ISO-8583 message to Iso8583Message object for further retrieval and manipulation.
 
 The read operation can be done using methods:
@@ -333,7 +333,7 @@ public class HelloSocket {
 }
 ```
 
-## Write ==
+## Write
 Write operation means convert Iso8583Message object to ISO-8583 message.
 
 The read operation can be done using methods:
