@@ -11,7 +11,7 @@ nucleus8583 provides very simple API and can be implemented using 3 simple steps
 - Add nucleus8583-2.2.0.jar to project build path
 
 #### Maven Project
-- Create new maven project using {{{mvn archetype:generate}}} command
+- Create new maven project using ```mvn archetype:generate``` command
 - Open pom.xml to be edited
 - Add following XML to pom.xml file
 
