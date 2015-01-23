@@ -1,19 +1,19 @@
-= Quickstart =
+## Quickstart
 nucleus8583 provides very simple API and can be implemented using 3 simple steps:
-  # Create a Project
-  # Codec Configuration
-  # Hello World
+- Create a Project
+- Codec Configuration
+- Hello World
 
-== Create a Project ==
-=== Eclipse Project ===
-  # Open eclipse IDE
-  # Create new project using menu: *File* > *New* > *Java Project*
-  # Add nucleus8583-2.2.0.jar to project build path
+## Create a Project
+#### Eclipse Project
+- Open eclipse IDE
+- Create new project using menu: *File* > *New* > *Java Project*
+- Add nucleus8583-2.2.0.jar to project build path
 
-=== Maven Project ===
-  # Create new maven project using {{{mvn archetype:generate}}} command
-  # Open pom.xml to be edited
-  # Add following XML to pom.xml file
+#### Maven Project
+- Create new maven project using {{{mvn archetype:generate}}} command
+- Open pom.xml to be edited
+- Add following XML to pom.xml file
 
 ```xml
 <dependencies>
@@ -29,11 +29,11 @@ nucleus8583 provides very simple API and can be implemented using 3 simple steps
 
     there is no need to add the artifact to your local maven repo since nucleus8583-core is already registered in maven central repositories.
 
-== Codec Configuration ==
+## Codec Configuration
   # After creating project, create new file named nucleus8583.xml (the name can be changed to anything you like) in any directory you like (for example: under project directory).
   # Open nuclues8583.xml for editing
   # Insert following XML into nuclues8583.xml
-    {{{
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <iso-message encoding="ASCII">
 	<iso-field id="0" length="4" type="custom" align="none" />
@@ -166,7 +166,7 @@ nucleus8583 provides very simple API and can be implemented using 3 simple steps
 	<iso-field id="127" length="999" type="custom ..." align="none" />
 	<iso-field id="128" length="8" type="b" />
 </iso-message>
-}}}
+```
 
 == Hello World ==
   # On your project, create one java file named HelloWorld
