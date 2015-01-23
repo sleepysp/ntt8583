@@ -27,7 +27,7 @@ nucleus8583 provides very simple API and can be implemented using 3 simple steps
 </dependencies>
 ```
 
-    there is no need to add the artifact to your local maven repo since nucleus8583-core is already registered in maven central repositories.
+there is no need to add the artifact to your local maven repo since nucleus8583-core is already registered in maven central repositories.
 
 ## Codec Configuration
 - After creating project, create new file named nucleus8583.xml (the name can be changed to anything you like) in any directory you like (for example: under project directory).
