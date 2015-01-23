@@ -26,7 +26,7 @@ message factory is a set of rules defined how to perform conversion to / from IS
   * The ```empty-value``` attribute. When a bit value is fully trimmed, it will result empty string value. By specifying this attribute, you can replace the empty string value to any other values you want. For example, you specify ```empty-value="abcd"``` in iso field number 4. If field number 4 is activated and has empty string, the field number 4 will have value ```abcd``` instead of empty string.
 
 Here is the complete sample of codec XML file:
-```
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <iso-message encoding="ASCII">
 	<iso-field id="0" length="4" type="custom" align="none" />
@@ -161,13 +161,14 @@ Here is the complete sample of codec XML file:
 </iso-message>
 ```
 
-===Java Code===
+### Java Code===
 Before you can do any operations, you *must* have one instance of ```org.nucleus8583.core.Iso8583MessageFactory``` class, this instance can be safely shared in your Java Application so you can save your memory consumption. To instance the class, you can use class constructor. The class constructor has signatures
   ```public Iso8583MessageFactory(java.io.InputStream);```
   ```public Iso8583MessageFactory(java.lang.String);```
 
 The constructor will read codec XML data from given input stream ```java.io.InputStream``` or given location ```java.lang.String```. For example, if you have codec XML file named nucleus8583.xml placed under root directory project, your code will be
-   ```
+
+```java
 import java.io.FileInputStream;
 
 import org.nucleus8583.core.Iso8583MessageFactory;
@@ -176,16 +177,20 @@ import org.nucleus8583.core.Iso8583MessageFactory;
         Iso8583MessageFactory factory = new Iso8583MessageFactory(new FileInputStream("nucleus8583.xml"));
 ...
 ```
+
 or
-   ```
+
+```java
 import org.nucleus8583.core.Iso8583MessageFactory;
 
 ...
         Iso8583MessageFactory factory = new Iso8583MessageFactory("nucleus8583.xml");
 ...
 ```
+
 or
-   ```
+
+```java
 import org.nucleus8583.core.Iso8583MessageFactory;
 
 ...
@@ -194,7 +199,8 @@ import org.nucleus8583.core.Iso8583MessageFactory;
 ```
 
 For another sample if you have codec XML file named nucleus8583.xml under META-INF directory (on classpath), you can use code
-   ```
+
+```java
 import java.io.FileInputStream;
 
 import org.nucleus8583.core.Iso8583MessageFactory;
@@ -204,7 +210,7 @@ import org.nucleus8583.core.Iso8583MessageFactory;
 ...
 ```
 
-===Note===
+### Note===
 Every type has its own value for ```align```, ```pad-with```, and ```empty-value``` attributes (except ```custom``` type). If you use so, you can't override their value. If you would like to use custom value, please use ```custom``` type.
 
 This is the value for ```align```, ```pad-with```, and ```empty-value``` attributes:
@@ -220,9 +226,10 @@ This is the value for ```align```, ```pad-with```, and ```empty-value``` attribu
 || ...    || none    || `N/A`  || `<empty-string>` ||
 
 
-==Creating Message==
+## Creating Message==
 Before invoking read/write operation, you need one instance of ```org.nucleus8583.core.Iso8583Message```. You can create the instance by using code
-  ```
+
+```java
 import org.nucleus8583.core.Iso8583MessageFactory;
 import org.nucleus8583.core.Iso8583Message;
 
@@ -238,7 +245,8 @@ import org.nucleus8583.core.Iso8583Message;
 Once you have an instance of Iso8583Message, you can reuse this instance for further use. To reuse instance, you need to invoke ```void clear()``` method first. *Notice:* this class is *not thread-safe*.
 
 For example:
-  ```
+
+```java
 import org.nucleus8583.core.Iso8583MessageFactory;
 import org.nucleus8583.core.Iso8583Message;
 
@@ -261,7 +269,8 @@ import org.nucleus8583.core.Iso8583Message;
 ```
 
 Another advantage using nucleus8583 is if you want to read iso-8583 message, set appropriate fields, and write it, you can use same instance without invoking the ```void clear()``` method. You can take a look into below code for clearer view
-  ```
+
+```java
 import org.nucleus8583.core.Iso8583MessageFactory;
 import org.nucleus8583.core.Iso8583Message;
 
@@ -285,20 +294,21 @@ import org.nucleus8583.core.Iso8583Message;
 ...
 ```
 
-== Read ==
+## Read ==
 Read operation means convert ISO-8583 message to Iso8583Message object for further retrieval and manipulation.
 
 The read operation can be done using methods:
-  # ```public void unpack(byte[]) throws Exception```
-  # ```public void unpack(java.io.InputStream) throws Exception```
-  # ```public void unpack(java.io.Reader) throws Exception```
+- ```public void unpack(byte[]) throws Exception```
+- ```public void unpack(java.io.InputStream) throws Exception```
+- ```public void unpack(java.io.Reader) throws Exception```
 
 Those 3 methods have same function, to read iso-8583 message from given data storage. The difference only the type of data storage. You can read from byte array, InputStream, or Reader.
 
 *NOTE:* The slowest method is ```public void unpack(byte[]) throws Exception``` and the fastest method is ```public void unpack(java.io.Reader) throws Exception```.
 
 Below is a sample code for read operation from network
-```
+
+```java
 import java.io.InputStream;
 import java.net.Socket;
 
@@ -323,20 +333,21 @@ public class HelloSocket {
 }
 ```
 
-== Write ==
+## Write ==
 Write operation means convert Iso8583Message object to ISO-8583 message.
 
 The read operation can be done using methods:
-  # ```byte[] void pack() throws Exception```
-  # ```public void pack(java.io.OutputStream) throws Exception```
-  # ```public void pack(java.io.Writer) throws Exception```
+- ```byte[] void pack() throws Exception```
+- ```public void pack(java.io.OutputStream) throws Exception```
+- ```public void pack(java.io.Writer) throws Exception```
 
 Those 3 methods have same function, to write iso-8583 message to given output storage. The difference only the type of output storage. You can write to byte array, OutputStream, or Writer.
 
 *NOTE:* The slowest method is ```public byte[] pack() throws Exception``` and the fastest method is ```public void pack(java.io.Writer) throws Exception```.
 
 Below is a sample code for write operation directly to network
-```
+
+```java
 import java.io.OutputStream;
 import java.net.Socket;
 
