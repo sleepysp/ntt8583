@@ -1,7 +1,7 @@
-= Manual Documentation =
+# Manual Documentation =
 nucleus8583 provides API to read and write from / to ISO-8583 message. Before using read/write operation, you will need to create message factory configuration.
 
-== Message Factory ==
+## Message Factory ==
 message factory is a set of rules defined how to perform conversion to / from ISO-8583 message. These rules defined in specific XML format:
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -11,9 +11,9 @@ message factory is a set of rules defined how to perform conversion to / from IS
 </iso-message>
 ```
 
-  * The ``` encoding ``` attribute means what type of encoding used in conversion. Currently only support ``` ASCII ```
-  * ``` iso-message ``` tag can have one or more ``` iso-field ``` tag
-  * The ``` iso-field ``` tag used to configure one iso field. So if there are 129 fields in an iso-8583 message, 129 ``` iso-field ``` tags are defined under ``` iso-package ``` tag
+  * The `encoding` attribute means what type of encoding used in conversion. Currently only support `ASCII`
+  * `iso-message` tag can have one or more `iso-field` tag
+  * The `iso-field` tag used to configure one iso field. So if there are 129 fields in an iso-8583 message, 129 ``` iso-field ``` tags are defined under ``` iso-package ``` tag
   * The ``` id ``` attribute is intended to determine which bit you want to configure. For example, ``` <iso-field id="4" /> ``` means that tag is intended to configure iso field number 4
   * The ``` length ``` attribute is intended to determine how long the field is. For example, ``` <iso-field id="4" length="12" /> ``` means iso field number 4 has 12 character length
   * The ``` type ``` attribute used to determine the type of iso field. For example, ``` <iso-field id="4" length="12" type="n" /> ``` means iso field number 4 has data element type n. Further info about the iso data elements can be found in http://en.wikipedia.org/wiki/ISO_8583#Data_elements. In the 2.2.0 version, nucleus8583 only supports: a, n, s, an, as, ns, ans, b, ., .., and ...
