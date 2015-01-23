@@ -188,7 +188,7 @@ there is no need to add the artifact to your local maven repo since nucleus8583-
 	Iso8583MessageFactory factory = new Iso8583MessageFactory("file:nucleus8583.xml");
 	
 	// if you need to load from class path
-	Iso8583MessageFactory factory = new // Iso8583MessageFactory("classpath:nucleus8583.xml");
+	// Iso8583MessageFactory factory = new Iso8583MessageFactory("classpath:nucleus8583.xml");
 	
 	// if you need to load from InputStream
 	// Iso8583MessageFactory factory = new Iso8583MessageFactory(new FileInputStream("nucleus8583.xml"));
