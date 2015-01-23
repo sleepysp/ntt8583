@@ -14,7 +14,8 @@ nucleus8583 provides very simple API and can be implemented using 3 simple steps
   # Create new maven project using {{{mvn archetype:generate}}} command
   # Open pom.xml to be edited
   # Add following XML to pom.xml file
-    {{{
+
+```xml
 <dependencies>
     ...
     <dependency>
@@ -24,7 +25,8 @@ nucleus8583 provides very simple API and can be implemented using 3 simple steps
     </dependency>
     ...
 </dependencies>
-}}}
+```
+
     there is no need to add the artifact to your local maven repo since nucleus8583-core is already registered in maven central repositories.
 
 == Codec Configuration ==
