@@ -30,9 +30,10 @@ nucleus8583 provides very simple API and can be implemented using 3 simple steps
     there is no need to add the artifact to your local maven repo since nucleus8583-core is already registered in maven central repositories.
 
 ## Codec Configuration
-  # After creating project, create new file named nucleus8583.xml (the name can be changed to anything you like) in any directory you like (for example: under project directory).
-  # Open nuclues8583.xml for editing
-  # Insert following XML into nuclues8583.xml
+- After creating project, create new file named nucleus8583.xml (the name can be changed to anything you like) in any directory you like (for example: under project directory).
+- Open nuclues8583.xml for editing
+- Insert following XML into nuclues8583.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <iso-message encoding="ASCII">
@@ -168,60 +169,61 @@ nucleus8583 provides very simple API and can be implemented using 3 simple steps
 </iso-message>
 ```
 
-== Hello World ==
-  # On your project, create one java file named HelloWorld
-  # Create main method, so your HelloWorld.java will be
-    {{{
-public class HelloWorld {
-    ...
-    public static void main(String[] args) throws Exception {
-        // to be added later
+## Hello World
+- On your project, create one java file named HelloWorld
+- Create main method, so your HelloWorld.java will be
+  ```java
+  public class HelloWorld {
+      ...
+      public static void main(String[] args) throws Exception {
+          // to be added later
+      }
+      ...
     }
-    ...
-}
-}}}
-  # Replace body of main method with following code
-    {{{
-// if you need to load from physical path
-Iso8583MessageFactory factory = new Iso8583MessageFactory("file:nucleus8583.xml");
+```
 
-// if you need to load from class path
-Iso8583MessageFactory factory = new // Iso8583MessageFactory("classpath:nucleus8583.xml");
+- Replace body of main method with following code
+	```java
+	// if you need to load from physical path
+	Iso8583MessageFactory factory = new Iso8583MessageFactory("file:nucleus8583.xml");
+	
+	// if you need to load from class path
+	Iso8583MessageFactory factory = new // Iso8583MessageFactory("classpath:nucleus8583.xml");
+	
+	// if you need to load from InputStream
+	// Iso8583MessageFactory factory = new Iso8583MessageFactory(new FileInputStream("nucleus8583.xml"));
+	
+	// create new Iso Message
+	Iso8583Message msg = factory.createMessage();
+	
+	// do fields manipulation
+	msg.setMti("0200");
+	msg.set(2, "716331");
+	
+	// convert into iso-8583 message
+	byte[] packed = msg.pack();
+	
+	// print out generated iso-8583 message
+	System.out.println("packed = " + new String(packed));
+	
+	// reading from iso-8583 message
+	
+	// you can reuse your Iso8583Message class instance by invoking clear() method
+	msg.clear();
+	
+	// do read from iso-8583 message
+	msg.unpack(packed);
+	
+	// do fields retrieval
+	System.out.println("bit number 0 (MTI) is " + msg.getMti());
+	System.out.println("bit number 2 is " + msg.get(2));
+	
+	// dump the Iso8583Message
+	System.out.println(msg);
+	```
 
-// if you need to load from InputStream
-// Iso8583MessageFactory factory = new Iso8583MessageFactory(new FileInputStream("nucleus8583.xml"));
-
-// create new Iso Message
-Iso8583Message msg = factory.createMessage();
-
-// do fields manipulation
-msg.setMti("0200");
-msg.set(2, "716331");
-
-// convert into iso-8583 message
-byte[] packed = msg.pack();
-
-// print out generated iso-8583 message
-System.out.println("packed = " + new String(packed));
-
-// reading from iso-8583 message
-
-// you can reuse your Iso8583Message class instance by invoking clear() method
-msg.clear();
-
-// do read from iso-8583 message
-msg.unpack(packed);
-
-// do fields retrieval
-System.out.println("bit number 0 (MTI) is " + msg.getMti());
-System.out.println("bit number 2 is " + msg.get(2));
-
-// dump the Iso8583Message
-System.out.println(msg);
-}}}
-
-  # Finally, your HelloWorld.java will have content:
-    {{{
+- Finally, your HelloWorld.java will have content:
+```java
 import java.io.FileInputStream;
 
 import org.nucleus8583.core.Iso8583MessageFactory;
@@ -269,7 +271,7 @@ public class HelloWorld {
     }
     ...
 }
-}}}
+```
 
-== Further Reading ==
-  # [http://code.google.com/p/nucleus8583/wiki/Manual Manual Documentation]
+## Further Reading ==
+- [http://code.google.com/p/nucleus8583/wiki/Manual Manual Documentation]
