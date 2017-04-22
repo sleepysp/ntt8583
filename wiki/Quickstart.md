@@ -274,4 +274,6 @@ there is no need to add the artifact to your local maven repo since nucleus8583-
 	```
 
 ## Further Reading ==
-- [http://code.google.com/p/nucleus8583/wiki/Manual Manual Documentation]
+- [Manual](Manual.md)
+
+
