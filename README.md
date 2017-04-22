@@ -14,8 +14,9 @@ In the configuration, nucleus8583 has XML-based configuration with standard ISO-
 
 This is a fork from the original project built by Robbi Kurniawan (https://github.com/robbik/nucleus8583). 
 
-The main purpose is to merge in Andrey Marushkevych's fixes (https://github.com/marushkevych/nucleus8583) on the documentation 
-and move to docs to use Markdown instead of Wiki.
+The main purpose is to:
+ - merge in Andrey Marushkevych's fixes (https://github.com/marushkevych/nucleus8583) for the documentation 
+ - migrate docs to use Markdown instead of Wiki.
 
 
 
